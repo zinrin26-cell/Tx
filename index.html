@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090d1a">
+<title>TX Insight AI</title>
+<style>
+:root{--bg:#090d1a;--panel:#11182a;--panel2:#151f35;--line:#27344d;--text:#edf3ff;--muted:#92a2c2;--cyan:#53e3d4;--blue:#6a8cff;--red:#ff6b8a;--gold:#ffc96b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#182344 0,#090d1a 55%);color:var(--text);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+.wrap{max-width:1050px;margin:auto;padding:22px 16px 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:11px}.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;color:#07111e;font-weight:900;font-size:20px;box-shadow:0 8px 28px #53e3d42b}.brand h1{font-size:19px;margin:0;letter-spacing:.2px}.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}.status{border:1px solid var(--line);border-radius:999px;padding:7px 10px;color:var(--muted);font-size:12px;white-space:nowrap}.dot{display:inline-block;width:7px;height:7px;background:var(--gold);border-radius:50%;margin-right:6px}.dot.ok{background:var(--cyan)}
+.hero{background:linear-gradient(135deg,#182642,#11182a 70%);border:1px solid #2b3b5d;border-radius:24px;padding:22px;display:grid;grid-template-columns:1.2fr .8fr;gap:22px;box-shadow:0 20px 60px #0003}.eyebrow{color:var(--cyan);text-transform:uppercase;letter-spacing:1.6px;font-size:11px;font-weight:800}.hero h2{font-size:clamp(24px,4vw,36px);line-height:1.13;margin:10px 0}.sub{color:var(--muted);max-width:520px;margin:0}.prediction{background:#0c1323;border:1px solid #293958;border-radius:19px;padding:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:205px}.prediction .label{color:var(--muted);font-size:12px}.pick{font-size:clamp(38px,7vw,54px);font-weight:900;letter-spacing:1px;margin:4px 0}.pick.tai{color:var(--red)}.pick.xiu{color:var(--cyan)}.confidence{width:100%;height:7px;border-radius:9px;background:#24304a;overflow:hidden;margin:10px 0 6px}.confidence span{display:block;height:100%;width:50%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:9px;transition:width .3s}.tiny{font-size:11px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}.stat,.panel{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:16px}.stat .k{font-size:12px;color:var(--muted)}.stat .v{font-size:23px;font-weight:800;margin-top:5px}.stat .v.small{font-size:17px}.layout{display:grid;grid-template-columns:1fr 1fr;gap:14px}.panel h3{font-size:15px;margin:0 0 13px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.muted{color:var(--muted)}.pill{border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:11px;color:var(--muted)}.dice{display:flex;gap:9px;margin:14px 0}.die{width:48px;height:48px;border-radius:13px;background:#eaf0ff;color:#10182a;display:grid;place-items:center;font-size:22px;font-weight:900;box-shadow:inset 0 -3px 0 #b9c5df}.total{font-size:24px;font-weight:900}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}button{cursor:pointer;border:0;border-radius:12px;padding:11px 14px;font-weight:750;font-size:13px;color:#07121d;background:linear-gradient(135deg,var(--cyan),#8ef2c7)}button.secondary{background:#1c2942;color:var(--text);border:1px solid #314260}button.warn{background:#3a2130;color:#ffb0c1;border:1px solid #633449}button:disabled{opacity:.45;cursor:not-allowed}.formrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}input,select{min-width:0;background:#0b1221;border:1px solid #2b3b58;color:var(--text);padding:11px;border-radius:11px;font:inherit}input{width:90px}select{flex:1;min-width:130px}.history{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.chip{border-radius:10px;padding:7px 9px;font-size:12px;font-weight:800;background:#17243a;border:1px solid var(--line)}.chip.tai{color:var(--red)}.chip.xiu{color:var(--cyan)}.empty{color:var(--muted);font-size:13px;padding:10px 0}.foot{color:var(--muted);font-size:11px;text-align:center;margin-top:18px}.notice{margin-top:12px;padding:10px 12px;background:#241f19;border:1px solid #4c3b28;border-radius:12px;color:#e6c99c;font-size:12px}.error{color:#ff9eb0;font-size:12px;margin-top:8px;min-height:18px}
+@media(max-width:700px){.hero{grid-template-columns:1fr;padding:17px}.prediction{min-height:175px}.grid{grid-template-columns:repeat(2,1fr);gap:9px}.layout{grid-template-columns:1fr}.wrap{padding:15px 12px 28px}.stat,.panel{padding:14px}.top{align-items:flex-start}.status{font-size:10px}.brand h1{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand"><div class="logo">TX</div><div><h1>TX INSIGHT AI</h1><p>Phân tích dữ liệu • Thống kê phiên</p></div></div><div class="status" id="status"><span class="dot" id="dot"></span><span id="statusText">Chưa kết nối API</span></div></header>
+<section class="hero">
+<div><div class="eyebrow">Prediction engine · beta</div><h2>Phân tích Tài / Xỉu<br>từ lịch sử phiên</h2><p class="sub">Thống kê tần suất gần đây, chuỗi kết quả và độ cân bằng dữ liệu để đưa ra tín hiệu tham khảo — không thể biết trước kết quả ngẫu nhiên.</p><div class="actions"><button id="connectBtn">Kết nối API</button><button class="secondary" id="refreshBtn">Làm mới</button><button class="secondary" id="demoBtn">Nạp dữ liệu mẫu</button></div><div class="error" id="error"></div></div>
+<div class="prediction"><div class="label">TÍN HIỆU THAM KHẢO</div><div class="pick" id="pick">—</div><div id="reason" class="tiny">Thêm dữ liệu để bắt đầu phân tích</div><div class="confidence"><span id="bar"></span></div><div class="row" style="width:100%"><span class="tiny">Mức nghiêng thống kê</span><b id="conf">50%</b></div></div>
+</section>
+<section class="grid">
+<div class="stat"><div class="k">Phiên mới nhất</div><div class="v small" id="session">—</div></div>
+<div class="stat"><div class="k">Tổng điểm</div><div class="v" id="sum">—</div></div>
+<div class="stat"><div class="k">Tỉ lệ Tài trong mẫu</div><div class="v" id="taiRate">—</div></div>
+<div class="stat"><div class="k">Số mẫu lịch sử</div><div class="v" id="count">0</div></div>
+</section>
+<div class="layout">
+<section class="panel"><div class="row"><h3>Kết quả phiên gần nhất</h3><span class="pill" id="time">Chưa có dữ liệu</span></div><div class="dice"><div class="die" id="d1">–</div><div class="die" id="d2">–</div><div class="die" id="d3">–</div></div><div class="row"><span class="muted">Tổng ba xúc xắc</span><span class="total" id="total">—</span></div><div class="row" style="margin-top:8px"><span class="muted">Kết quả API</span><b id="result">—</b></div><div class="notice">API trong file bạn gửi chỉ cung cấp phiên mới nhất. Lịch sử cần được tích lũy khi tool đang chạy hoặc nhập thủ công.</div></section>
+<section class="panel"><h3>Thêm kết quả thủ công</h3><p class="muted" style="font-size:12px;margin-top:-5px">Dùng khi API chưa kết nối hoặc để bổ sung lịch sử cũ.</p><div class="formrow"><input id="manualSession" placeholder="Phiên" aria-label="Số phiên"><select id="manualResult" aria-label="Kết quả"><option value="tai">Tài</option><option value="xiu">Xỉu</option></select><button id="addBtn">Thêm</button></div><div class="actions"><button class="secondary" id="undoBtn">Xóa mẫu mới nhất</button><button class="warn" id="clearBtn">Xóa lịch sử</button></div><p class="tiny">Quy ước thông thường: tổng 4–10 là Xỉu, 11–17 là Tài; bộ ba có thể được một số trò chơi xử lý theo luật riêng.</p></section>
+</div>
+<section class="panel" style="margin-top:14px"><div class="row"><h3>Lịch sử kết quả</h3><span class="pill">Mới nhất trước</span></div><div class="history" id="history"><div class="empty">Chưa có lịch sử. Kết nối API hoặc thêm kết quả thủ công.</div></div></section>
+<div class="foot">TX Insight AI · Công cụ thống kê tham khảo, không cam kết độ chính xác và không tự động đặt cược.</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+let historyData=[], latest=null, lastSession=null, timer=null;
+function norm(v){v=String(v||'').toLowerCase();if(v.includes('tai')||v.includes('tài'))return 'tai';if(v.includes('xiu')||v.includes('xỉu'))return 'xiu';return ''}
+function label(v){return v==='tai'?'TÀI':v==='xiu'?'XỈU':'—'}
+function addHistory(session,result){result=norm(result);if(!result)return false; if(session!=null&&historyData.some(x=>String(x.session)===String(session)))return false;historyData.unshift({session:session??('M'+Date.now()),result,at:new Date().toLocaleTimeString('vi-VN')});historyData=historyData.slice(0,200);render();return true}
+function analyze(){
+ const n=historyData.length; $('count').textContent=n;
+ if(!n){$('pick').textContent='—';$('pick').className='pick';$('reason').textContent='Thêm dữ liệu để bắt đầu phân tích';$('conf').textContent='50%';$('bar').style.width='50%';$('taiRate').textContent='—';return}
+ const recent=historyData.slice(0,Math.min(20,n));
+ let tai=0,xiu=0;recent.forEach((x,i)=>{const w=1/(1+i*.08);if(x.result==='tai')tai+=w;else xiu+=w});
+ const total=tai+xiu, p=tai/total, choice=p>=.5?'tai':'xiu', confidence=Math.round(Math.max(p,1-p)*100);
+ let streak=1;while(streak<n&&historyData[streak].result===historyData[0].result)streak++;
+ $('pick').textContent=label(choice);$('pick').className='pick '+choice;
+ $('reason').textContent=`${n} mẫu • chuỗi gần nhất ${label(historyData[0].result)} ${streak} phiên`;
+ $('conf').textContent=confidence+'%';$('bar').style.width=confidence+'%';
+ $('taiRate').textContent=Math.round(historyData.filter(x=>x.result==='tai').length/n*100)+'%';
+}
+function render(){
+ analyze();const el=$('history');el.innerHTML='';
+ if(!historyData.length){el.innerHTML='<div class="empty">Chưa có lịch sử. Kết nối API hoặc thêm kết quả thủ công.</div>';return}
+ historyData.slice(0,50).forEach(x=>{const d=document.createElement('span');d.className='chip '+x.result;d.textContent=`${x.session}: ${label(x.result)}`;el.appendChild(d)});
+}
+function showLatest(d){
+ latest=d;$('session').textContent=d.phien??'—';$('sum').textContent=d.tong??'—';$('time').textContent=d.thoi_gian??'Đã cập nhật';
+ $('d1').textContent=d.xuc_xac_1||'–';$('d2').textContent=d.xuc_xac_2||'–';$('d3').textContent=d.xuc_xac_3||'–';$('total').textContent=d.tong??'—';$('result').textContent=label(norm(d.ket_qua))||'—';
+ const r=norm(d.ket_qua);if(r)addHistory(d.phien,r);
+}
+async function fetchApi(){
+ $('error').textContent='';
+ try{
+  const url = new URL('/api/lcmd5', location.origin).href;
+  const res=await fetch(url,{cache:'no-store'});if(!res.ok)throw new Error('API trả về HTTP '+res.status);
+  const json=await res.json();if(!json.success||!json.data)throw new Error(json.message||'Dữ liệu API không hợp lệ');
+  showLatest(json.data);$('dot').classList.add('ok');$('statusText').textContent='API đang hoạt động';
+ }catch(e){$('error').textContent='Không kết nối được API: '+e.message+'. Địa chỉ hiện tại có thể chỉ là máy chủ tĩnh; cần chạy server.js có endpoint /api/lcmd5 hoặc dùng nhập thủ công.';$('dot').classList.remove('ok');$('statusText').textContent='Chưa kết nối API'}
+}
+$('connectBtn').onclick=async()=>{await fetchApi();if(timer)clearInterval(timer);timer=setInterval(fetchApi,15000)};
+$('refreshBtn').onclick=fetchApi;
+$('addBtn').onclick=()=>{const s=$('manualSession').value.trim()||('M'+Date.now());if(addHistory(s,$('manualResult').value)){$('manualSession').value='';$('error').textContent=''}else $('error').textContent='Phiên đã tồn tại hoặc kết quả không hợp lệ.'};
+$('undoBtn').onclick=()=>{historyData.shift();render()};
+$('clearBtn').onclick=()=>{if(confirm('Xóa toàn bộ lịch sử đang lưu?')){historyData=[];latest=null;render()}};
+$('demoBtn').onclick=()=>{const demo=['xiu','tai','tai','xiu','tai','xiu','xiu','tai','xiu','tai','tai','xiu'];historyData=[];demo.forEach((r,i)=>historyData.push({session:'Mẫu-'+(demo.length-i),result:r,at:''}));render();$('error').textContent='Đang dùng dữ liệu mẫu — không phải kết quả thật.'};
+render();
+</script>
+</body>
+</html>

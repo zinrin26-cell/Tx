@@ -1,0 +1,8 @@
+{
+  "name": "tx-ai-tool-fixed",
+  "version": "1.0.1",
+  "description": "TX Insight AI tool with API proxy configured for port 9898",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "dependencies": { "axios": "^1.7.9", "express": "^4.21.2" }
+}
